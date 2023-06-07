@@ -12,7 +12,6 @@ body {
    max-width: 600px;
    margin: 30px auto;
 }
-
 #left-column {
     margin: 100px 0px;
     font-family: 'Rajdhani', sans-serif;
@@ -22,11 +21,9 @@ body {
     font-size: 10px;
     color: #97C5E6CC;
 }
-
-.description, .location {
+.description, .city {
     font-size: 24px;
 }
-
 .current-temperature {
     font-size: 52px;
     font-weight: lighter;
@@ -39,7 +36,6 @@ body {
     font-family: 'PT Sans Narrow', sans-serif
     
 }
-
 .code {
     text-align: center;
     font-size: 12px;
