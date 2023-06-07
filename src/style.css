@@ -1,3 +1,46 @@
-h1{
-    color: purple;
+
+body {
+    background-color: #FBECECCC !important;
+}
+
+
+.container {
+
+   background-image: url("../src/images/cloudy.jpg");
+   background-size: cover;
+   border-radius: 4px;
+   max-width: 600px;
+   margin: 30px auto;
+}
+
+#left-column {
+    margin: 100px 0px;
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+}
+.lastUpdated {
+    font-size: 10px;
+    color: #97C5E6CC;
+}
+
+.description, .location {
+    font-size: 24px;
+}
+
+.current-temperature {
+    font-size: 52px;
+    font-weight: lighter;
+}
+
+#right-column {
+    background-color: #97C5E6CC;
+    border-radius: 0 4px 4px 0;
+    color: #857b8c;
+    font-family: 'PT Sans Narrow', sans-serif
+    
+}
+
+.code {
+    text-align: center;
+    font-size: 12px;
 }
