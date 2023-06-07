@@ -17,14 +17,14 @@ body {
     font-family: 'Rajdhani', sans-serif;
     text-align: center;
 }
-.lastUpdated {
-    font-size: 10px;
-    color: #97C5E6CC;
-}
-.description, .city {
+
+#description, #city {
     font-size: 24px;
 }
-.current-temperature {
+#description:first-letter{
+    text-transform: capitalize;
+}
+#current-temperature {
     font-size: 52px;
     font-weight: lighter;
 }
