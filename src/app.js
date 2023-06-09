@@ -23,11 +23,17 @@ function displayTemperature(response) {
     document.querySelector("#humidity").innerHTML = `Humidity: ${(response.data.temperature.humidity)}%`;
     document.querySelector("#wind").innerHTML = `Wind: ${Math.round(response.data.wind.speed)} Km/H`;
     document.querySelector("#last-updated").innerHTML = `Last updated: ${formatDate(response.data.time * 1000)}`;
-}
+    document
+      .querySelector("#icon")
+      .setAttribute(
+        "src",
+        `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+      );
+    }
 
 let apiKey = "3oa2c4504acf0t98cfbd9f4b11f24965";
 let endPoint = "https://api.shecodes.io/weather/v1/current?";
-let query = "Ubatuba";
+let query = "São Paulo";
 let unit = "metric";
 let apiUrl = `${endPoint}query=${query}&key=${apiKey}&=${unit}`;
 
