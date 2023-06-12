@@ -21,12 +21,9 @@ function displayTemperature(response) {
     document.querySelector("#humidity").innerHTML = `Humidity: ${(response.data.temperature.humidity)}%`;
     document.querySelector("#wind").innerHTML = `Wind: ${Math.round(response.data.wind.speed)} Km/H`;
     document.querySelector("#last-updated").innerHTML = `Last updated: ${formatDate(response.data.time * 1000)}`;
-    document
-      .querySelector("#icon")
-      .setAttribute(
-        "src",
-        `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    document.querySelector("#icon").setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
       );
+      celsiusTemperature = response.data.temperature.current;
     }
 function searchCity(city) {
 let apiKey = "3oa2c4504acf0t98cfbd9f4b11f24965";
@@ -41,7 +38,26 @@ function handleSubmit(event){
     let cityInput = document.querySelector("#city-input");
     searchCity(cityInput.value);
 }
+function displayFahrenheitTemperature(event){
+    event.preventDefault();
+    let fahrenheitTemperature = (celsiusTemperature * 9)/5 + 32; 
+    document.querySelector("#current-temperature").innerHTML = Math.round(fahrenheitTemperature);
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+}
+function displayCelsiusTemperature(event){
+    event.preventDefault();
+    document.querySelector("#current-temperature").innerHTML = Math.round(celsiusTemperature);
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+}
+
+let celsiusTemperature = null;
 
 document.getElementById("search-form").addEventListener("submit", handleSubmit);
 
-
+fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+searchCity("São Paulo");
