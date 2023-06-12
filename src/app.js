@@ -56,8 +56,9 @@ let celsiusTemperature = null;
 
 document.getElementById("search-form").addEventListener("submit", handleSubmit);
 
-fahrenheitLink = document.querySelector("#fahrenheit-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-celsiusLink = document.querySelector("#celsius-link");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
 searchCity("São Paulo");

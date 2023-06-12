@@ -17,7 +17,19 @@ body {
     font-family: 'Rajdhani', sans-serif;
     text-align: center;
 }
-
+#city-input {
+    background-color: transparent;
+    border-radius: 4px;
+    border-color:#85869b ;
+    border-width: 1px;
+}
+.search-button{
+    border-radius: 4px;
+    background-color: #FBECECCC;
+    border-color:#FBECECCC;
+    color: #85869b ;
+    border-width: 1px;
+}
 #description, #city {
     font-size: 24px;
 }
