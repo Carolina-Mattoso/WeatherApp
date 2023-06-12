@@ -13,8 +13,6 @@ function formatDate(timestamp){
     return `${day} at ${hours}:${minutes}`;
 }
 
-
-
 function displayTemperature(response) {
     document.querySelector("#current-temperature").innerHTML = ` ${Math.round(response.data.temperature.current)}º`;
     document.querySelector("#city").innerHTML = (response.data.city);
@@ -30,11 +28,20 @@ function displayTemperature(response) {
         `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
       );
     }
-
+function searchCity(city) {
 let apiKey = "3oa2c4504acf0t98cfbd9f4b11f24965";
 let endPoint = "https://api.shecodes.io/weather/v1/current?";
-let query = "São Paulo";
 let unit = "metric";
-let apiUrl = `${endPoint}query=${query}&key=${apiKey}&=${unit}`;
-
+let apiUrl = `${endPoint}query=${city}&key=${apiKey}&=${unit}`;
 axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event){
+    event.preventDefault()
+    let cityInput = document.querySelector("#city-input");
+    searchCity(cityInput.value);
+}
+
+document.getElementById("search-form").addEventListener("submit", handleSubmit);
+
+
