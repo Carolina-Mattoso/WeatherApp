@@ -55,6 +55,20 @@ body {
     font-family: 'PT Sans Narrow', sans-serif
     
 }
+.forecast-date, .forecast-temp{
+    color:#857b8c ;
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.forecast-temp{
+    font-size: 24px;
+}
+.min-temp{
+    opacity: 0.6;
+}
+
+
 .code {
     text-align: center;
     font-size: 12px;
