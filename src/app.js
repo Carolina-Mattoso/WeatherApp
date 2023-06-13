@@ -19,13 +19,13 @@ function displayForecast() {
     let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
     days.forEach(function(day){
 forecastHTML = forecastHTML + `
-    <li>
+    <li id="weather-forecast-list">
       <div class="forecast-date">
       
           ${day}
         
       </div>
-      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" class="d-block w-36" alt="...">
+      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" class="forecast-icon" alt="...">
       <div class="forecast-temp">
       <span class="max-temp">23º</span>
       <span class="min-temp">11º</span>

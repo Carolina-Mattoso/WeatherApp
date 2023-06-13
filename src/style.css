@@ -2,6 +2,20 @@
 body {
     background-color: #FBECECCC !important;
 }
+ul {
+    padding: 0px;
+}
+hr {
+    margin: 5px !important;
+}
+#weather-forecast-list  {
+    list-style: none;
+    padding-bottom: 8px;
+}
+.details-list{
+    list-style: none;
+    padding: 3px;
+}
 
 
 .container {
@@ -52,9 +66,18 @@ body {
     background-color: #97C5E6CC;
     border-radius: 0 4px 4px 0;
     color: #857b8c;
-    font-family: 'PT Sans Narrow', sans-serif
-    
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-align: center;
 }
+#weather-details-heading{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    padding-top: 10px;
+}
+#last-updated {
+    font-size: 12px;
+}
+
 .forecast-date, .forecast-temp{
     color:#857b8c ;
     text-align: center;
@@ -62,7 +85,10 @@ body {
 }
 
 .forecast-temp{
-    font-size: 24px;
+    font-size: 12px;
+}
+.forecast-icon{
+    width: 50px;
 }
 .min-temp{
     opacity: 0.6;
