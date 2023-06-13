@@ -13,6 +13,32 @@ function formatDate(timestamp){
     return `${day} at ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+    let forecastElement =  document.querySelector("#forecast");
+    let forecastHTML = `<ul>`;
+    let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+    days.forEach(function(day){
+forecastHTML = forecastHTML + `
+    <li>
+      <div class="forecast-date">
+      
+          ${day}
+        
+      </div>
+      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" class="d-block w-36" alt="...">
+      <div class="forecast-temp">
+      <span class="max-temp">23º</span>
+      <span class="min-temp">11º</span>
+    </div>
+    </div>
+  </div>
+</li> `;
+    })
+forecastHTML = forecastHTML + `</ul>`;
+forecastElement.innerHTML = forecastHTML;
+
+}
+
 function displayTemperature(response) {
     document.querySelector("#current-temperature").innerHTML = ` ${Math.round(response.data.temperature.current)}º`;
     document.querySelector("#city").innerHTML = (response.data.city);
@@ -62,3 +88,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("São Paulo");
+displayForecast();
