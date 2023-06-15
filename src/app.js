@@ -13,7 +13,8 @@ function formatDate(timestamp){
     return `${day} at ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecastElement =  document.querySelector("#forecast");
     let forecastHTML = `<ul>`;
     let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
@@ -39,6 +40,14 @@ forecastElement.innerHTML = forecastHTML;
 
 }
 
+function getforecast(currentCity) {
+    let apiKey = "3oa2c4504acf0t98cfbd9f4b11f24965";
+    let endPoint = "https://api.shecodes.io/weather/v1/forecast?";
+    let unit = "metric";
+    let apiUrl = `${endPoint}query=${currentCity}&key=${apiKey}&units${unit}`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
     document.querySelector("#current-temperature").innerHTML = ` ${Math.round(response.data.temperature.current)}º`;
     document.querySelector("#city").innerHTML = (response.data.city);
@@ -50,13 +59,17 @@ function displayTemperature(response) {
     document.querySelector("#icon").setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
       );
       celsiusTemperature = response.data.temperature.current;
+      getforecast(response.data.city);
     }
+
 function searchCity(city) {
 let apiKey = "3oa2c4504acf0t98cfbd9f4b11f24965";
 let endPoint = "https://api.shecodes.io/weather/v1/current?";
 let unit = "metric";
 let apiUrl = `${endPoint}query=${city}&key=${apiKey}&=${unit}`;
 axios.get(apiUrl).then(displayTemperature);
+
+
 }
 
 function handleSubmit(event){
@@ -78,6 +91,8 @@ function displayCelsiusTemperature(event){
     fahrenheitLink.classList.remove("active");
 }
 
+
+
 let celsiusTemperature = null;
 
 document.getElementById("search-form").addEventListener("submit", handleSubmit);
@@ -88,4 +103,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("São Paulo");
-displayForecast();
