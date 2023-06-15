@@ -8,28 +8,47 @@ function formatDate(timestamp){
     if (minutes < 10) {
         minutes = `0${minutes}`;
     }
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let days = ["Sunday",
+    "Monday", 
+    "Tuesday", 
+    "Wednesday", 
+    "Thursday", 
+    "Friday", 
+    "Saturday"
+];
     let day = days[date.getDay()];
     return `${day} at ${hours}:${minutes}`;
 }
 
+function formatForecastDate(timestamp){
+ let date = new Date(timestamp * 1000);
+ let day = date.getDay();
+ let weekDays = [
+   "Sunday",
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday",
+ ];
+ return weekDays[day];
+}
+
 function displayForecast(response) {
-    console.log(response.data.daily);
+    let forecast = response.data.daily;
     let forecastElement =  document.querySelector("#forecast");
     let forecastHTML = `<ul>`;
     let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
-    days.forEach(function(day){
+    forecast.forEach(function(forecastDay, index){
+        if(index < 5)
 forecastHTML = forecastHTML + `
     <li id="weather-forecast-list">
-      <div class="forecast-date">
-      
-          ${day}
-        
-      </div>
-      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" class="forecast-icon" alt="...">
+      <div class="forecast-date">${formatForecastDate(forecastDay.time)}</div>
+      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" class="forecast-icon" alt="...">
       <div class="forecast-temp">
-      <span class="max-temp">23º</span>
-      <span class="min-temp">11º</span>
+      <span class="max-temp">${Math.round(forecastDay.temperature.maximum)}º</span>
+      <span class="min-temp">${Math.round(forecastDay.temperature.minimum)}º</span>
     </div>
     </div>
   </div>
