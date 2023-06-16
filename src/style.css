@@ -16,10 +16,7 @@ hr {
     list-style: none;
     padding: 3px;
 }
-
-
 .container {
-
    background-image: url("../src/images/cloudy.jpg");
    background-size: cover;
    border-radius: 4px;
